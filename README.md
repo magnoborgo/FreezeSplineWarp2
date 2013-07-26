@@ -15,7 +15,7 @@ Multithreading can crash Nuke on some cases, disable it if you experience crashe
 
 #### USAGE ####
 
-Select a SplineWarp3 node and fill the freeze frame pop-up with the desired "Freezeframe"
+Select a SplineWarp3 node and fill the freeze frame pop-up with the desired "Freezeframe"   
 Limitations: if the animated shape is inside a transformed layer or matrix, you may need to bake the shape points positions with 
 the http://github.com/magnoborgo/RotoPaintToSplineWarp2
 
