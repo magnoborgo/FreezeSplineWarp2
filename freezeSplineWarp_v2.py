@@ -187,6 +187,11 @@ def freezeWarp_v2():
     k.setTooltip("This will create a Framehold Node and set it to the Freezeframe value, if you use expressions mode it will be linked")
     p.addKnob(k)
     k.setValue(True)
+    k = nuke.Boolean_Knob("stb", "Stabilize Setup")
+    k.setFlag(nuke.STARTLINE)
+    k.setTooltip("This will create a handy warp stabilization setup")
+    p.addKnob(k)
+    k.setValue(False)
     
     if not checkAB(shapeList):
         p.addKnob( nuke.Text_Knob("","","\nWARNING: your node has only\ncurves on A or B outputs\n")) 
@@ -263,7 +268,9 @@ def freezeWarp_v2():
     else:
         nuke.message( 'This version is for Nuke v7, use v1.1 with Nuke v6.3 from Nukepedia' ) 
 
- 
+    #===========================================================================
+    # framehold creation
+    #=========================================================================== 
     fh = p.knobs()["fh"].value()
     if fh:
         framehold = nuke.nodes.FrameHold()
@@ -282,6 +289,35 @@ def freezeWarp_v2():
         dot["ypos"].setValue(framehold["ypos"].getValue()+11)
         set_inputs(node,dot)
         set_inputs(dot,framehold)
+        
+    #=======================================================================
+    # stabilization setup
+    #=======================================================================
+    stb = p.knobs()["stb"].value()
+    if stb:
+        nukescripts.node_copypaste()
+        b_input = nuke.selectedNode()
+        nukescripts.node_copypaste()
+        a_input = nuke.selectedNode()
+        b_input["mix"].setValue(1)
+        dot = nuke.nodes.Dot()
+        dot["label"].setValue("Stabilization")
+        set_inputs(a_input,b_input)
+        set_inputs(b_input,dot)
+        nukescripts.swapAB(b_input)
+        dot["xpos"].setValue(node["xpos"].getValue()+135)
+        dot["ypos"].setValue(framehold["ypos"].getValue()+11)
+        b_input["xpos"].setValue(node["xpos"].getValue()+135)
+        b_input["ypos"].setValue(dot["ypos"].getValue()+80)
+        a_input["xpos"].setValue(node["xpos"].getValue()+135)
+        a_input["ypos"].setValue(dot["ypos"].getValue()+160)
+        #=======================================================================
+        # workaround.... if node is not show on properties tab the "root warp" attribute will not change!
+        #=======================================================================
+        b_input.knob('selected').setValue(True)
+        nuke.show(nuke.selectedNode())
+        nuke.selectedNode()["root_warp"].setValue(0)
+  
     
     label = "FreezeF: [value fframe]" if exp else "FreezeF:" + str(freezeFrame)
     node.knob('label').setValue(label)
