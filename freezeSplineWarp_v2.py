@@ -193,8 +193,8 @@ def freezeWarp_v2():
     p.addKnob(k)
     k.setValue(False)
     
-    if not checkAB(shapeList):
-        p.addKnob( nuke.Text_Knob("","","\nWARNING: your node has only\ncurves on A or B outputs\n")) 
+    if not checkAB(shapeList):        
+        p.addKnob( nuke.Text_Knob("","",'\n<b><font color="red">WARNING: your node has only<br>curves on A or B outputs</font></b>\n')) 
     
     #===========================================================================
     # end of panel setup
