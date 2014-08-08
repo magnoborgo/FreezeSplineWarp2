@@ -30,4 +30,4 @@ the http://github.com/magnoborgo/RotoPaintToSplineWarp2
 
 #### Licensing ####
 
-This script is made avalable under a BSD Style license that is included in the package.
+This script is made avalable under a BSD Style license that is included in the package
