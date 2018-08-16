@@ -8,15 +8,13 @@ This Nuke script will freeze the shapes of a SplineWarp on a desired frame, by d
 alt="Click to Watch the video" width="240" height="135" border="10" /></a>
 
 
-
-
-
-If you like it, use it frequently, or want to support further development please consider a small donation to the author.   
-<a href='http://www.pledgie.com/campaigns/21123'><img alt='Click here to lend your support to: VFX tools coding project and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/21123.png?skin_name=chrome' border='0' /></a>
+If you like it, use it frequently, or want to support further development please consider a small donation to the author.
+https://www.paypal.me/mborgo
 
 #### COMPATIBILITY ####
 
 Nukev7 and up
+Nukev11 now working (by disabling multithread)
 
 #### KNOW LIMITATIONS ####
 
