@@ -239,7 +239,7 @@ def freezeWarp_v2():
                     return
                 task.setMessage('Processing ' + shape.name)
                 task.setProgress((int(n/len(shapeList)*100)))
-                if mt and nuke.NUKE_VERSION_MAJOR != 11:
+                if mt and nuke.NUKE_VERSION_MAJOR < 11:
                     threading.Thread(None,expressionLock, args=(shape,ab,freezeFrame,node,task)).start() 
                 else:
                     expressionLock(shape,ab,freezeFrame,node,task)
@@ -259,7 +259,7 @@ def freezeWarp_v2():
         #===========================================================================
         #  join existing threads (to wait completion before continue)
         #===========================================================================
-        if mt and nuke.NUKE_VERSION_MAJOR != 11:
+        if mt and nuke.NUKE_VERSION_MAJOR < 11:
             main_thread = threading.currentThread()
             for t in threading.enumerate():
                 if t is main_thread:
