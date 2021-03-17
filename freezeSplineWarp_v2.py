@@ -324,7 +324,7 @@ def freezeWarp_v2():
     label = "FreezeF: [value fframe]" if exp else "FreezeF:" + str(freezeFrame)
     node.knob('label').setValue(label)
     node.knob('filter').setValue('Mitchell') #less smoother than cubic
-    print "FreezeSplineWarp Finished,", len(shapeList), "shape(s) at frame", freezeFrame 
+    print("FreezeSplineWarp Finished,", len(shapeList), "shape(s) at frame", freezeFrame )
 
 if __name__ == '__main__':
     freezeWarp_v2()
