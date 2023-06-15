@@ -1,5 +1,5 @@
 import nuke
-nuke.tprint('Loading freezeSplineWarp_v2.py')
+nuke.tprint('Loading freezeSplineWarp_v3.py')
 try:
     from freezeSplineWarp_v2 import *
 except:
@@ -10,4 +10,4 @@ except:
 #===============================================================================
 toolbar = nuke.menu("Nodes")
 bvfxt = toolbar.addMenu("BoundaryVFX Tools", "BoundaryVFX.png")
-bvfxt.addCommand('FreezeWarp for Nukev7', 'freezeWarp_v2()','shift+F8', icon='bvfx_SplineF.png')
+bvfxt.addCommand('FreezeWarp for Nukev7', 'freezeWarp_v3()','shift+F8', icon='bvfx_SplineF.png')
