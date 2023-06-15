@@ -329,10 +329,26 @@ def freezeWarp_v3():
     #=======================================================================
     stb = p.knobs()["stb"].value()
     if stb:
-        nukescripts.node_copypaste()
-        b_input = nuke.selectedNode()
-        nukescripts.node_copypaste()
-        a_input = nuke.selectedNode()
+        originalspw = nuke.selectedNode()
+        b_input = nuke.createNode('SplineWarp3')
+        tab = nuke.Tab_Knob('FreezeFrame') 
+        b_input.addKnob(tab)
+        ff= nuke.Int_Knob('fframe',"Freeze Frame")
+        b_input.addKnob(ff)
+        for knobname in originalspw.knobs():
+            value = originalspw[knobname].toScript()
+            b_input[knobname].fromScript(value)
+        b_input.knob('selected').setValue(True)
+    
+        a_input = nuke.createNode('SplineWarp3')
+        tab = nuke.Tab_Knob('FreezeFrame') 
+        a_input.addKnob(tab)
+        ff= nuke.Int_Knob('fframe',"Freeze Frame")
+        a_input.addKnob(ff)
+        for knobname in originalspw.knobs():
+            value = originalspw[knobname].toScript()
+            a_input[knobname].fromScript(value)       
+
         b_input["mix"].setValue(1)
         dot = nuke.nodes.Dot()
         dot["label"].setValue("Stabilization")
