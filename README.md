@@ -13,8 +13,7 @@ https://www.paypal.me/mborgo
 
 #### COMPATIBILITY ####
 
-Nukev7 and up
-Nukev11 now working (by disabling multithread)
+Works on Nuke v7 to Nuke v14
 
 #### KNOW LIMITATIONS ####
 
